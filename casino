@@ -10,13 +10,19 @@ static int dinerofinal;
 
 
 	public static void dineroDisponible(int dinerodisponible) {
+		if (dinerodisponible<=0) {
+			System.out.println("El dinero disponible no puede ser menor o igual a 0");
+			System.exit(0);
+		}else {
 		System.out.println(dinerodisponible+" €");
 		}
+	}
 	public static void dineroApuesta(int dineroapuesta,int dinerodisponible) {
 	
-	if((dineroapuesta==0)|(dineroapuesta>dinerodisponible)) {
+	if((dineroapuesta<=0)|(dineroapuesta>dinerodisponible)) {
 		System.out.println("La apuesta no se puede hacer ya que no se ha realizado apuesta o es superior al dinero dispuesto");
 		System.out.println("Inténtelo de nuevo por favor");
+		System.exit(0);
 	}else {
 		
 		System.out.println("El dinero que va a apostar es..."+dineroapuesta+" €");
@@ -84,14 +90,12 @@ static int dinerofinal;
 		System.out.println("Por favor introduce el dinero disponible para jugar");
 		dinerodisponible=sc.nextInt();
 		
-		if(dinerodisponible==0) {
-			System.out.println("El saldo para jugar en el minibanco debe ser superior a 0,inténtelo de nuevo por favor");
-		}else {
+		
 		System.out.println("Su dinero para apostar en nuestro minicasino es... ");
 		minicasino.dineroDisponible(dinerodisponible);
 		contador2++;
 		System.out.println("¡EMPECEMOS!");
-		}
+		
 		do {
 		
 		System.out.println("Introduce una cantidad para apostar");
