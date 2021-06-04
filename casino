@@ -1,0 +1,119 @@
+package metodosverano;
+import java.util.Scanner;
+
+public class minicasino {
+static Scanner sc=new Scanner(System.in);
+static String apuesta;
+static int numeromaquina;
+static int dinerofinal;
+
+
+
+	public static void dineroDisponible(int dinerodisponible) {
+		System.out.println(dinerodisponible+" €");
+		}
+	public static void dineroApuesta(int dineroapuesta,int dinerodisponible) {
+	
+	if((dineroapuesta==0)|(dineroapuesta>dinerodisponible)) {
+		System.out.println("La apuesta no se puede hacer ya que no se ha realizado apuesta o es superior al dinero dispuesto");
+		System.out.println("Inténtelo de nuevo por favor");
+	}else {
+		
+		System.out.println("El dinero que va a apostar es..."+dineroapuesta+" €");
+		}
+	}
+	public static void paroImpar(String apuesta) {
+		switch(apuesta) {
+		case "par":
+			System.out.println("Usted ha apostado por... "+apuesta);
+			break;
+		case "impar":
+			System.out.println("Usted ha apostado por... "+apuesta);
+			break;
+		default:
+			System.out.println("Usted debe elegir entre pares o impares, inténtelo de nuevo por favor");
+		}
+	}
+	public static void numeroAleatorio(int numeromaquina,String resultado,int dinerodisponible,int dineroapuesta) {
+		numeromaquina=(int) (Math.random()*37);
+		System.out.println("El número que genera la máquina es "+numeromaquina);
+		if (numeromaquina % 2==0) {
+			resultado="par";
+			
+			if (apuesta.equals(resultado)){
+				System.out.println("Ganaste la apuesta");
+				dinerodisponible+=dineroapuesta;
+				dinerofinal=dinerodisponible;
+				System.out.println("El saldo que te queda para jugar es..."+dinerodisponible);
+			}else {
+				System.out.println("ops...lo siento...perdiste la apuesta");
+				dinerodisponible-=dineroapuesta;
+				dinerofinal=dinerodisponible;
+				System.out.println("El saldo que te queda para jugar es..."+dinerodisponible);
+			}System.out.println("El resultado de la máquina es= "+resultado);
+		
+		}else{
+			resultado="impar";
+			System.out.println("El resultado de la máquina es= "+resultado);
+			if (apuesta.equals(resultado)){
+				System.out.println("Ganaste la apuesta");
+				dinerodisponible+=dineroapuesta;
+				dinerofinal=dinerodisponible;
+				System.out.println("El saldo que te queda para jugar es..."+dinerodisponible);
+			}else {
+				System.out.println("ops...lo siento...perdiste la apuesta");
+				dinerodisponible-=dineroapuesta;
+				dinerofinal=dinerodisponible;
+				System.out.println("El saldo que te queda para jugar es..."+dinerodisponible);
+			}
+		}
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// primero se pide al usuario que diga el dinero del que dispone
+		int dinerodisponible;
+		int dineroapuesta;
+		int contador2=0;
+		String resultado="";
+		
+		System.out.println("********¡BIENVENIDO AL MINI CASINO!********");
+		
+		System.out.println("Por favor introduce el dinero disponible para jugar");
+		dinerodisponible=sc.nextInt();
+		
+		if(dinerodisponible==0) {
+			System.out.println("El saldo para jugar en el minibanco debe ser superior a 0,inténtelo de nuevo por favor");
+		}else {
+		System.out.println("Su dinero para apostar en nuestro minicasino es... ");
+		minicasino.dineroDisponible(dinerodisponible);
+		contador2++;
+		System.out.println("¡EMPECEMOS!");
+		}
+		do {
+		
+		System.out.println("Introduce una cantidad para apostar");
+		dineroapuesta=sc.nextInt();
+		minicasino.dineroApuesta(dineroapuesta, dinerodisponible);
+		
+		System.out.println("¿Apuesta por par o impar?");
+		apuesta=sc.next();
+		minicasino.paroImpar(apuesta);
+		
+		System.out.println("Ahora es el turno de la máquina...");
+		System.out.println("Un momento por favor mientras la máquina decide");
+		int contador=4;
+		for (int i=0;i>4;i++) {
+			System.out.println("...");
+		}
+		minicasino.numeroAleatorio(numeromaquina,resultado,dinerodisponible,dineroapuesta);
+		System.out.println("Tiene un saldo de= "+minicasino.dinerofinal);
+		contador2++;
+		}
+		while(contador2!=3);
+		System.out.println("*************VUELVE PRONTO**************");
+		}
+	}
+	
