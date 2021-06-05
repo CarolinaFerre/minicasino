@@ -85,7 +85,7 @@ static int dinerofinal;
 		int contador2=0;
 		String resultado="";
 		
-		System.out.println("********¡BIENVENIDO AL MINI CASINO!********");
+		System.out.println("********¡BIENVENIDO AL MINI CASINO!*********");
 		
 		System.out.println("Por favor introduce el dinero disponible para jugar");
 		dinerodisponible=sc.nextInt();
